@@ -24,7 +24,7 @@ jobs:
       #     MI_SALUDO: ${{ env.SALUDO }}
       #   # run: echo "El secreto tiene $(echo -n "$MI_SECRETO" | wc -c) caracteres"
       #   run: echo $MI_SALUDO
-      - run: echo 'Hi ${{ vars.SALUDO }}'
+      - run: echo ${{ vars.SALUDO }}
       - name: Avisar de fallo
         if: failure()
         run: echo "Algún step anterior ha fallado"
