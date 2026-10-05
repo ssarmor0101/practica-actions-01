@@ -18,6 +18,16 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm install
       - run: npm test
+      - name: Usar secreto sin exponerlo
+        env:
+          MI_SECRETO: ${{ secrets.SALUDO_SECRETO }}
+        run: echo "El secreto tiene $(echo -n "$MI_SECRETO" | wc -c) caracteres"
+      - name: Avisar de fallo
+        if: failure()
+        run: echo "Algún step anterior ha fallado"
+      - name: Limpieza final
+        if: always()
+        run: echo "Esto se ejecuta pase lo que pase"
   lint:
     runs-on: ubuntu-latest
     steps:
