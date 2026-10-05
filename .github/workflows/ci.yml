@@ -26,7 +26,7 @@ jobs:
       #   run: echo $MI_SALUDO
       - name: Prueba
         if: always()
-        run: echo ${{vars.SALUDO}}
+        run: echo ${{ vars.SALUDO }}
       - name: Avisar de fallo
         if: failure()
         run: echo "Algún step anterior ha fallado"
