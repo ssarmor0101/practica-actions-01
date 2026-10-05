@@ -21,10 +21,11 @@ jobs:
       - name: Usar secreto sin exponerlo
         if: always()
         env:
-          MI_SECRETO: ${{ secrets.SALUDO_SECRETO }}
-          # MI_SALUDO: ${{ vars.SALUDO }}
-        run: echo "El secreto tiene $(echo -n "$MI_SECRETO" | wc -c) caracteres"
+          # MI_SECRETO: ${{ secrets.SALUDO_SECRETO }}
+          MI_SALUDO: ${{ vars.SALUDO }}
+        # run: echo "El secreto tiene $(echo -n "$MI_SECRETO" | wc -c) caracteres"
         # run: echo "$MI_SALUDO"
+        run: echo ${{ vars.SALUDO }}
       - name: Avisar de fallo
         if: failure()
         run: echo "Algún step anterior ha fallado"
