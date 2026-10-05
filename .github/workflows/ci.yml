@@ -18,12 +18,13 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm install
       - run: npm test
-      - name: Usar secreto sin exponerlo
-        env:
-          # MI_SECRETO: ${{ secrets.SALUDO_SECRETO }}
-          MI_SALUDO: ${{ env.SALUDO }}
-        # run: echo "El secreto tiene $(echo -n "$MI_SECRETO" | wc -c) caracteres"
-        run: echo $MI_SALUDO
+      # - name: Usar secreto sin exponerlo
+      #   env:
+      #     # MI_SECRETO: ${{ secrets.SALUDO_SECRETO }}
+      #     MI_SALUDO: ${{ env.SALUDO }}
+      #   # run: echo "El secreto tiene $(echo -n "$MI_SECRETO" | wc -c) caracteres"
+      #   run: echo $MI_SALUDO
+      - run: echo 'Hi ${{ vars.SALUDO }}'
       - name: Avisar de fallo
         if: failure()
         run: echo "Algún step anterior ha fallado"
