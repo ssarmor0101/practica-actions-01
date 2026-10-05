@@ -21,7 +21,7 @@ jobs:
       - name: Usar secreto sin exponerlo
         env:
           # MI_SECRETO: ${{ secrets.SALUDO_SECRETO }}
-          MI_SALUDOO: ${{ env.SALUDO_SECRETO }}
+          MI_SALUDO: ${{ env.SALUDO_SECRETO }}
         # run: echo "El secreto tiene $(echo -n "$MI_SECRETO" | wc -c) caracteres"
         run: echo $MI_SALUDO
       - name: Avisar de fallo
